@@ -11,7 +11,7 @@ public class AlliancesUICore {
     
     let reload = PassthroughSubject<Void, Never>()
     
-    let canOpenSetting = CurrentValueSubject<Bool, Never>(true)
+    let canOpenSettings = CurrentValueSubject<Bool, Never>(true)
     let canRun = CurrentValueSubject<Bool, Never>(true)
 
 }
@@ -20,19 +20,19 @@ public protocol AlliancesDelegate {
     
     var core: AlliancesUICore { get }
     
-    var canOpenSetting: Bool { get set }
+    var canOpenSettings: Bool { get set }
     var canRun: Bool { get set }
 
-    func openSetting()
-    func run()
+    func openSettings()
+    func run() throws
     
 }
 
 public extension AlliancesDelegate {
     
-    var canOpenSetting: Bool {
-        set { core.canOpenSetting.send(newValue) }
-        get { core.canOpenSetting.value }
+    var canOpenSettings: Bool {
+        set { core.canOpenSettings.send(newValue) }
+        get { core.canOpenSettings.value }
     }
     
     var canRun: Bool {
