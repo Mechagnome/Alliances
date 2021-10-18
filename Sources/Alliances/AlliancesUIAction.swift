@@ -17,12 +17,18 @@ public protocol AlliancesDelegate {
     
     var core: AlliancesUICore { get }
     
+    var canOpenSetting: Bool { get }
+    var canRun: Bool { get }
+
     func openSetting()
-    
     func run()
+    
 }
 
 public extension AlliancesDelegate {
+    
+    var canOpenSetting: Bool { true }
+    var canRun: Bool { true }
     
     func reload() {
         core.reload.send()
