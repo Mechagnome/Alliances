@@ -5,9 +5,9 @@ final class AlliancesTests: XCTestCase {
     
     class TestApp: AlliancesApp {
         
-        var bundleID: String = UUID().uuidString
+        static var bundleID: String = UUID().uuidString
         
-        var name: String { bundleID }
+        var name: String { Self.bundleID }
         
         var remark: String? {
             "remark"
