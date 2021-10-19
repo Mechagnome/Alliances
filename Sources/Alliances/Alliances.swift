@@ -9,10 +9,13 @@ public protocol AlliancesApp: AlliancesDelegate {
     var remark: String? { get }
     /// 子任务
     var tasks: [AlliancesApp] { get }
+    /// 处理路由
+    func deeplink(open url: URL) -> Bool
 }
 
 public extension AlliancesApp {
     
+    func deeplink(open url: URL) -> Bool { false }
     var remark: String? { nil }
     
 }
