@@ -2,6 +2,7 @@ import Foundation
 
 public protocol AlliancesApp: AlliancesDelegate {
     
+    static var bundleID: String { get }
     /// 标题
     var name: String { get }
     /// 备注

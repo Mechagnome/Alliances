@@ -3,19 +3,21 @@ import XCTest
 
 final class AlliancesTests: XCTestCase {
     
-    struct TestApp: AlliancesApp {
+    public struct TestApp: AlliancesApp {
         
-        var name: String { UUID().uuidString }
-        var remark: String? { "remark" }
-        var tasks: [AlliancesApp.Type] = []
-        var core: AlliancesUICore = .init()
-        init() {}
+        public static let bundleID: String = UUID().uuidString
+        public var name: String { Self.bundleID }
+        public var remark: String? { "remark" }
+        public var tasks: [AlliancesApp.Type] = []
+        public var core: AlliancesUICore = .init()
+        
+        public init() {}
 
-        func openSettings() {
+        public func openSettings() {
             progress -= 0.05
         }
 
-        func run() throws {
+        public func run() throws {
             progress += 0.05
         }
     }
