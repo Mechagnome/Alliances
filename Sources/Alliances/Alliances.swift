@@ -10,7 +10,7 @@ public protocol AlliancesApp: AlliancesDelegate {
     /// 备注
     var remark: String? { get }
     /// 子任务
-    var tasks: [AlliancesApp] { get }
+    var tasks: [AlliancesApp.Type] { get }
     /// 处理路由
     func deeplink(open url: URL) -> Bool
     
