@@ -1,7 +1,35 @@
 import Foundation
 import Stem
 
+public class AlliancesConfiguration {
+    
+    public var folder: FilePath.Folder
+    
+    public var settings: [String: Any] {
+        set {
+            (newValue as NSDictionary).write(to: folder.file(name: "settings.plist").url, atomically: true)
+        }
+        get {
+            guard let dict = NSDictionary(contentsOfFile: folder.file(name: "settings.plist").url.path) else {
+                return [:]
+            }
+            return (dict as? [String : Any]) ?? [:]
+        }
+    }
+    
+    public init(folder: FilePath.Folder) {
+        self.folder = folder
+    }
+    
+    public convenience init(from configuration: AlliancesConfiguration, app: AlliancesApp.Type) {
+        self.init(folder: try! configuration.folder.create(folder: app.bundleID))
+    }
+    
+}
+
 public protocol AlliancesApp: AlliancesDelegate {
+    
+    var configuration: AlliancesConfiguration { get }
     
     static var bundleID: String { get }
     /// 标题
@@ -10,23 +38,13 @@ public protocol AlliancesApp: AlliancesDelegate {
     var remark: String? { get }
     /// 子任务
     var tasks: [AlliancesApp] { get }
-    /// 处理路由
-    func deeplink(open url: URL) -> Bool
     
-    var folder: FilePath.Folder { get }
-    
-    init(folder: FilePath.Folder)
+    init(_ configuration: AlliancesConfiguration)
 }
 
 
 public extension AlliancesApp {
-    
-    func folder(task: AlliancesApp.Type) throws -> FilePath.Folder {
-       try folder.create(folder: task.bundleID)
-    }
-    
+        
     var remark: String? { nil }
-    
-    func deeplink(open url: URL) -> Bool { false }
     
 }

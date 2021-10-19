@@ -6,13 +6,17 @@ final class AlliancesTests: XCTestCase {
     public struct TestApp: AlliancesApp {
         
         public static let bundleID: String = UUID().uuidString
+        public var core: AlliancesUICore = .init()
+        public var configuration: AlliancesConfiguration
+        
         public var name: String { Self.bundleID }
         public var remark: String? { "remark" }
-        public var tasks: [AlliancesApp.Type] = []
-        public var core: AlliancesUICore = .init()
-        
-        public init() {}
+        public var tasks: [AlliancesApp] = []
 
+        public init(_ configuration: AlliancesConfiguration) {
+            self.configuration = configuration
+        }
+        
         public func openSettings() {
             progress -= 0.05
         }
