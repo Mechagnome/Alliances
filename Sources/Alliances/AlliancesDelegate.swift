@@ -21,7 +21,7 @@ public class AlliancesUICore {
 
 public protocol AlliancesDelegate {
     
-    var core: AlliancesUICore { get }
+    var uiCore: AlliancesUICore { get }
     
     var canOpenSettings: Bool { get set }
     var canRun: Bool { get set }
@@ -34,22 +34,22 @@ public protocol AlliancesDelegate {
 public extension AlliancesDelegate {
     
     var canOpenSettings: Bool {
-        set { core.canOpenSettings.send(newValue) }
-        get { core.canOpenSettings.value }
+        set { uiCore.canOpenSettings.send(newValue) }
+        get { uiCore.canOpenSettings.value }
     }
     
     var canRun: Bool {
-        set { core.canRun.send(newValue) }
-        get { core.canRun.value }
+        set { uiCore.canRun.send(newValue) }
+        get { uiCore.canRun.value }
     }
     
     var progress: Int {
-        set { core.progress.send(newValue) }
-        get { core.progress.value }
+        set { uiCore.progress.send(newValue) }
+        get { uiCore.progress.value }
     }
     
     func reload() {
-        core.reload.send()
+        uiCore.reload.send()
     }
     
 }
