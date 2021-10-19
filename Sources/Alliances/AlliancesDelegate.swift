@@ -9,11 +9,11 @@ import Combine
 
 public class AlliancesUICore {
     
-    let reload = PassthroughSubject<Void, Never>()
+    public let reload = PassthroughSubject<Void, Never>()
     
-    let canOpenSettings = CurrentValueSubject<Bool, Never>(true)
-    let canRun = CurrentValueSubject<Bool, Never>(true)
-    let progress = CurrentValueSubject<Int, Never>(0)
+    public let canOpenSettings = CurrentValueSubject<Bool, Never>(true)
+    public let canRun = CurrentValueSubject<Bool, Never>(true)
+    public let progress = CurrentValueSubject<Int, Never>(0)
     
     public init() {}
 
