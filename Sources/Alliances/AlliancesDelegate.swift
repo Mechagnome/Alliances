@@ -14,6 +14,8 @@ public class AlliancesUICore {
     let canOpenSettings = CurrentValueSubject<Bool, Never>(true)
     let canRun = CurrentValueSubject<Bool, Never>(true)
     let progress = CurrentValueSubject<Int, Never>(0)
+    
+    public init() {}
 
 }
 
