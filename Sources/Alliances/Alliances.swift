@@ -3,7 +3,8 @@ import Foundation
 public protocol AlliancesApp: AlliancesDelegate {
     /// 唯一标识
     static var bundleID: String { get }
-        
+    
+    var id: String { get }
     /// 标题
     var name: String { get }
     /// 备注
@@ -19,7 +20,9 @@ public protocol AlliancesApp: AlliancesDelegate {
 
 public extension AlliancesApp {
     
-    func deeplink(open url: URL) -> Bool { false }
     var remark: String? { nil }
+    var id: String { Self.bundleID }
+    
+    func deeplink(open url: URL) -> Bool { false }
     
 }
