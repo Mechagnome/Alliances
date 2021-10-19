@@ -3,6 +3,7 @@ import Foundation
 public protocol AlliancesApp: AlliancesDelegate {
     /// 唯一标识
     static var bundleID: String { get }
+        
     /// 标题
     var name: String { get }
     /// 备注
@@ -15,11 +16,10 @@ public protocol AlliancesApp: AlliancesDelegate {
     init()
 }
 
+
 public extension AlliancesApp {
     
     func deeplink(open url: URL) -> Bool { false }
-    
-    var bundleID: String { Self.bundleID }
     var remark: String? { nil }
     
 }
