@@ -22,7 +22,8 @@ public class AlliancesConfiguration {
     }
     
     public convenience init(from configuration: AlliancesConfiguration, app: AlliancesApp.Type) {
-        self.init(folder: try! configuration.folder.create(folder: app.bundleID))
+        self.init(folder: configuration.folder.folder(name: app.bundleID))
+        _ = try? configuration.folder.folder(name: app.bundleID).create()
     }
     
 }
