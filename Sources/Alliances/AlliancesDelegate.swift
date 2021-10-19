@@ -20,7 +20,7 @@ public class AlliancesUICore {
 
 }
 
-public protocol AlliancesDelegate {
+public protocol AlliancesDelegate: AnyObject {
     
     var core: AlliancesUICore { get }
     
