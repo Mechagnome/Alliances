@@ -20,7 +20,7 @@ public class AlliancesUICore {
 
 }
 
-public protocol AlliancesDelegate: AnyObject {
+public protocol AlliancesDelegate {
     
     var core: AlliancesUICore { get }
     
@@ -35,17 +35,17 @@ public protocol AlliancesDelegate: AnyObject {
 public extension AlliancesDelegate {
     
     var canOpenSettings: Bool {
-        set { core.canOpenSettings.send(newValue) }
+        nonmutating set { core.canOpenSettings.send(newValue) }
         get { core.canOpenSettings.value }
     }
     
     var canRun: Bool {
-        set { core.canRun.send(newValue) }
+        nonmutating set { core.canRun.send(newValue) }
         get { core.canRun.value }
     }
     
     var progress: Double {
-        set { core.progress.send(newValue) }
+        nonmutating set { core.progress.send(newValue) }
         get { core.progress.value }
     }
     

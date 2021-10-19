@@ -3,7 +3,7 @@ import XCTest
 
 final class AlliancesTests: XCTestCase {
     
-    class TestApp: AlliancesApp {
+    struct TestApp: AlliancesApp {
         
         static var bundleID: String = UUID().uuidString
         
@@ -25,7 +25,7 @@ final class AlliancesTests: XCTestCase {
             progress += 0.05
         }
         
-        required init() {}
+        init() {}
         
     }
     

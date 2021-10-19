@@ -18,6 +18,8 @@ public protocol AlliancesApp: AlliancesDelegate {
 public extension AlliancesApp {
     
     func deeplink(open url: URL) -> Bool { false }
+    
+    var bundleID: String { Self.bundleID }
     var remark: String? { nil }
     
 }
