@@ -6,6 +6,7 @@
 //
 
 import Combine
+import Foundation
 
 public class AlliancesUICore {
     
@@ -13,7 +14,7 @@ public class AlliancesUICore {
     
     public let canOpenSettings = CurrentValueSubject<Bool, Never>(true)
     public let canRun = CurrentValueSubject<Bool, Never>(true)
-    public let progress = CurrentValueSubject<Int, Never>(0)
+    public let progress = CurrentValueSubject<Double, Never>(0)
     
     public init() {}
 
@@ -43,7 +44,7 @@ public extension AlliancesDelegate {
         get { core.canRun.value }
     }
     
-    var progress: Int {
+    var progress: Double {
         set { core.progress.send(newValue) }
         get { core.progress.value }
     }
