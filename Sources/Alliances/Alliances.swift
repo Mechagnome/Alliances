@@ -11,6 +11,8 @@ public protocol AlliancesApp: AlliancesDelegate {
     var tasks: [AlliancesApp] { get }
     /// 处理路由
     func deeplink(open url: URL) -> Bool
+    
+    init()
 }
 
 public extension AlliancesApp {

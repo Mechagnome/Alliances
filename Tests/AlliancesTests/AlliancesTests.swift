@@ -25,6 +25,8 @@ final class AlliancesTests: XCTestCase {
             progress += 0.05
         }
         
+        required init() {}
+        
     }
     
     func testExample() throws {
