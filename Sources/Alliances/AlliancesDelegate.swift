@@ -13,6 +13,7 @@ public class AlliancesUICore {
     
     let canOpenSettings = CurrentValueSubject<Bool, Never>(true)
     let canRun = CurrentValueSubject<Bool, Never>(true)
+    let progress = CurrentValueSubject<Int, Never>(0)
 
 }
 
@@ -38,6 +39,11 @@ public extension AlliancesDelegate {
     var canRun: Bool {
         set { core.canRun.send(newValue) }
         get { core.canRun.value }
+    }
+    
+    var progress: Int {
+        set { core.progress.send(newValue) }
+        get { core.progress.value }
     }
     
     func reload() {
