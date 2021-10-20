@@ -7,6 +7,7 @@
 
 import Combine
 import Foundation
+import SwiftUI
 
 public class AlliancesUICore {
     
@@ -27,12 +28,17 @@ public protocol AlliancesDelegate {
     var canOpenSettings: Bool { get set }
     var canRun: Bool { get set }
 
-    func openSettings()
+    func openSettings() -> AnyView?
+    
     func run() throws
     
 }
 
 public extension AlliancesDelegate {
+    
+    func openSettings() -> AnyView? {
+        nil
+    }
     
     var canOpenSettings: Bool {
         nonmutating set { core.canOpenSettings.send(newValue) }
