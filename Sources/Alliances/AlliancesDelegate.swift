@@ -16,7 +16,6 @@ public class AlliancesUICore {
     public let canOpenSettings = CurrentValueSubject<Bool, Never>(true)
     public let canRun = CurrentValueSubject<Bool, Never>(true)
     public let progress = CurrentValueSubject<Double, Never>(0)
-    
     public let showView = PassthroughSubject<AnyView, Never>()
 
     public init() {}
@@ -30,8 +29,9 @@ public protocol AlliancesDelegate {
     var canOpenSettings: Bool { get set }
     var canRun: Bool { get set }
     
-    func run() throws    
-    func openSettings() throws
+    func run() throws
+    
+    var settingsView: AnyView? { get }
 
 }
 
@@ -41,8 +41,8 @@ public extension AlliancesDelegate {
         core.showView.send(view)
     }
     
-    func openSettings() throws {}
-    
+    var settingsView: AnyView? { nil }
+
     var canOpenSettings: Bool {
         nonmutating set { core.canOpenSettings.send(newValue) }
         get { core.canOpenSettings.value }
