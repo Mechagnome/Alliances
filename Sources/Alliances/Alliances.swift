@@ -35,7 +35,7 @@ public struct AppInfo: Identifiable, Equatable, Hashable, Codable {
     public let name: String
     public let summary: String
     
-    public init(id: String, name: String, icon: URL?, summary: String) {
+    public init(id: String, name: String, icon: URL? = nil, summary: String = "") {
         self.id = id
         self.name = name
         self.icon = icon
