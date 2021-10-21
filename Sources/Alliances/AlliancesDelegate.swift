@@ -17,6 +17,7 @@ public class AlliancesUICore {
     public let canRun = CurrentValueSubject<Bool, Never>(true)
     public let progress = CurrentValueSubject<Double, Never>(0)
     public let showView = PassthroughSubject<AnyView, Never>()
+    public let showSettingsView = PassthroughSubject<Void, Never>()
 
     public init() {}
 
@@ -56,6 +57,10 @@ public extension AlliancesDelegate {
     var progress: Double {
         nonmutating set { core.progress.send(newValue) }
         get { core.progress.value }
+    }
+    
+    func showSettingsView() {
+        core.showSettingsView.send()
     }
     
     func reload() {
