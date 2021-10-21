@@ -30,8 +30,9 @@ public protocol AlliancesDelegate {
     var canOpenSettings: Bool { get set }
     var canRun: Bool { get set }
     
-    func run() throws
-    
+    func run() throws    
+    func openSettings() throws
+
 }
 
 public extension AlliancesDelegate {
@@ -39,6 +40,8 @@ public extension AlliancesDelegate {
     func show(view: AnyView) {
         core.showView.send(view)
     }
+    
+    func openSettings() throws {}
     
     var canOpenSettings: Bool {
         nonmutating set { core.canOpenSettings.send(newValue) }
