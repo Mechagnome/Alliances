@@ -5,6 +5,8 @@ final class AlliancesTests: XCTestCase {
     
     public struct TestApp: AlliancesApp {
         
+        public static let appInfo: AppInfo = .init(id: "test", name: "Test", icon: nil, summary: "summary")
+        
         public static let bundleID: String = UUID().uuidString
         public var core: AlliancesUICore = .init()
         public var configuration: AlliancesConfiguration

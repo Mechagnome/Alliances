@@ -22,17 +22,34 @@ public class AlliancesConfiguration {
     }
     
     public convenience init(from configuration: AlliancesConfiguration, app: AlliancesApp.Type) {
-        self.init(folder: configuration.folder.folder(name: app.bundleID))
-        _ = try? configuration.folder.folder(name: app.bundleID).create()
+        self.init(folder: configuration.folder.folder(name: app.appInfo.id))
+        _ = try? configuration.folder.folder(name: app.appInfo.id).create()
+    }
+    
+}
+
+public struct AppInfo: Identifiable, Equatable, Hashable, Codable {
+
+    public let id: String
+    public let icon: URL?
+    public let name: String
+    public let summary: String
+    
+    public init(id: String, name: String, icon: URL?, summary: String) {
+        self.id = id
+        self.name = name
+        self.icon = icon
+        self.summary = summary
     }
     
 }
 
 public protocol AlliancesApp: AlliancesDelegate {
     
-    var configuration: AlliancesConfiguration { get }
+    static var appInfo: AppInfo { get }
     
-    static var bundleID: String { get }
+    var configuration: AlliancesConfiguration { get }
+        
     /// 标题
     var name: String { get }
     /// 备注
